@@ -7,12 +7,16 @@ fn generate_random_array() {
 //    println!("Random number array {:?}", arr);
 }
 
+
 fn main() {
-    let mut a = [5,2,8,5,9,5];
+    let mut a = [3,2,3,4,5];
+
     //let mut i = 0;
     println!("Starting array: {:?}",a);
 
-    for i in 0..(a.len()-1) {
+    for j in 0..(a.len()-1) {
+        let mut count = 0;
+        for i in 0..(a.len()-1-j) {
         if a[i] > a[i+1] {
         let temp = a[i];
         a[i] = a[i+1];
@@ -20,9 +24,19 @@ fn main() {
         println!("greater {:?}",a);
         } else {
         println!("lesser");
+            count = count + 1;
+        }
+    }
+        println!("Length: {}", (a.len()-j-1));
+        println!("Count: {}", count);
+        if count == (a.len()-j-1) {
+            println!("Finished early!");
+            break;
         }
     }
 
-    println!("Hello, world!");
+
+
+    println!("Final array {:?}", a);
     generate_random_array()
 }
